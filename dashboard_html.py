@@ -120,18 +120,6 @@ def main():
     except Exception:
         beach_weather = {}
 
-    # Diagnostic output: confirm when the strand data file was last written
-    try:
-        beach_weather_mtime = datetime.fromtimestamp(
-            os.path.getmtime("data/beach_weather.json")
-        ).astimezone().strftime("%Y-%m-%d %H:%M:%S %Z")
-        print(f"Strandweerbestand laatst gewijzigd: {beach_weather_mtime}")
-    except Exception:
-        print("Kan wijzigingstijd van data/beach_weather.json niet bepalen.")
-
-    if isinstance(beach_weather, dict):
-        print(f"Strandweerrecords ingelezen: {len(beach_weather)}")
-
     weather = {
         "temperature":"Niet beschikbaar", "condition":"Niet beschikbaar",
         "feels_like":"Niet beschikbaar", "humidity":"Niet beschikbaar",
@@ -347,7 +335,37 @@ h2{margin:0 0 28px;font-size:clamp(22px,2vw,36px)}.summary{display:flex;gap:30px
 .beach:last-child{border:0}.wash{position:absolute;inset:0;background:#f5f5f566}.card{position:relative;width:min(800px,100%);height:100%;padding:20px 25px;background:#fafafabe}.beach-weather-icon{position:absolute;right:18px;top:12px;width:90px;height:90px;object-fit:contain;z-index:2}.card h2,.card p,.card .row{position:relative;z-index:1}.beach-weather-icon{position:absolute;right:20px;top:15px;width:clamp(65px,7vw,105px);height:clamp(65px,7vw,105px)}
 .card h2{margin:0 0 14px}.card p{font-size:clamp(14px,1.2vw,24px);margin:0 0 25px}.weather-row{display:grid;grid-template-columns:115px 1fr;gap:0;font-size:clamp(13px,1.15vw,22px);line-height:1.55}.weather-row b{font-weight:400}.weather-row span{display:block}.row{display:grid;grid-template-columns:255px 1fr;gap:10px;font-size:clamp(13px,1.15vw,22px);line-height:1.55}
 .nav{position:fixed;z-index:5;bottom:12px;left:50%;transform:translateX(-50%);background:#fff;padding:7px 14px;border-radius:20px}button{border:0;background:transparent;font-size:20px}
-@media(max-width:800px){body{overflow:auto}.slide,.slide.active{display:block;width:100%;height:auto;min-height:100vh}.left{display:block}.current{min-height:65vh}.forecastbox{min-height:35vh}.right{border:0}.beach{min-height:520px}.weather-row{grid-template-columns:110px 1fr;gap:0}.row{grid-template-columns:145px 1fr}}
+@media(max-width:800px){
+html,body{width:100%;min-width:0;overflow-x:hidden}
+body{overflow-y:auto;-webkit-text-size-adjust:100%}
+header{height:60px!important;padding:10px 14px!important}
+header b{font-size:clamp(18px,5.5vw,28px)!important;white-space:nowrap}
+.slide,.slide.active{display:block;width:100%;height:auto;min-height:100dvh;padding-top:60px}
+.left{display:block;background-position:center top}
+.current{min-height:0;padding:18px 14px}
+.forecastbox{min-height:0;padding:14px}
+.panel{height:auto;padding:18px 16px}
+h2{margin-bottom:18px;font-size:clamp(20px,6vw,28px)}
+.summary{min-height:125px;gap:10px;align-items:flex-start}
+.summary>strong{font-size:clamp(42px,13vw,58px)}
+.summary img{right:0;top:-8px;width:clamp(85px,24vw,115px);height:clamp(85px,24vw,115px)}
+.groups{grid-template-columns:1fr 1fr;gap:14px 16px}
+.group h3{font-size:14px;margin-bottom:7px}
+.group div{font-size:13px;line-height:1.45}
+.group span{margin-left:8px}
+.forecast{grid-template-columns:60px 48px minmax(0,1fr) auto;gap:7px;min-height:60px}
+.forecast img{width:44px;height:44px}
+.forecast strong{font-size:14px}
+.forecast small{font-size:11px}
+.right{display:block;border:0}
+.beach{min-height:420px;height:auto;padding:14px;border-bottom:2px solid}
+.card{width:100%;height:auto;min-height:390px;padding:16px 14px}
+.card h2{padding-right:80px;margin-bottom:10px;font-size:22px}
+.card p{padding-right:70px;margin-bottom:18px;font-size:14px}
+.beach-weather-icon{right:12px;top:10px;width:70px;height:70px}
+.row{grid-template-columns:minmax(105px,42%) minmax(0,1fr);gap:7px;font-size:13px;line-height:1.5}
+.nav{bottom:calc(8px + env(safe-area-inset-bottom));padding:6px 12px}
+}
 </style>
 </head>
 <body>
