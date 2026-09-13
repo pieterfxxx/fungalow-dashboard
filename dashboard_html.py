@@ -356,8 +356,9 @@ h2{margin-bottom:15px;font-size:clamp(18px,5.2vw,25px)}
 .group span{margin-left:6px}
 .forecast{grid-template-columns:56px 44px minmax(0,1fr) auto;gap:6px;min-height:56px}
 .forecast img{width:40px;height:40px}
-.forecast strong{font-size:13px}
-.forecast small{font-size:10px}
+.forecast>b{font-size:11px;line-height:1.25}
+.forecast strong{font-size:12px}
+.forecast small{font-size:9px}
 .right{display:block;border:0}
 .beach{min-height:400px;height:auto;padding:12px;border-bottom:2px solid}
 .card{width:100%;height:auto;min-height:370px;padding:14px 12px}
