@@ -120,6 +120,18 @@ def main():
     except Exception:
         beach_weather = {}
 
+    # Diagnostic output: confirm when the strand data file was last written
+    try:
+        beach_weather_mtime = datetime.fromtimestamp(
+            os.path.getmtime("data/beach_weather.json")
+        ).astimezone().strftime("%Y-%m-%d %H:%M:%S %Z")
+        print(f"Strandweerbestand laatst gewijzigd: {beach_weather_mtime}")
+    except Exception:
+        print("Kan wijzigingstijd van data/beach_weather.json niet bepalen.")
+
+    if isinstance(beach_weather, dict):
+        print(f"Strandweerrecords ingelezen: {len(beach_weather)}")
+
     weather = {
         "temperature":"Niet beschikbaar", "condition":"Niet beschikbaar",
         "feels_like":"Niet beschikbaar", "humidity":"Niet beschikbaar",
