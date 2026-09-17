@@ -26,6 +26,8 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Generate dashboard
+        env:
+          TIDECHECK_API_KEY: ${{ secrets.TIDECHECK_API_KEY }}
         run: python dashboard_html.py
 
       - name: Commit updated dashboard
