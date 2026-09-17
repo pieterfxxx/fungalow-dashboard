@@ -119,9 +119,10 @@ def main():
     info = run_script("test_infoagua.py") or {}
     tides = run_script("test_tides.py") or {}
 
-    print("Open-Meteo strandweer vernieuwen...")
-    beach_result = run_script("test_beach_weather.py")
-    print("Stranddata controleren...")
+   print("Open-Meteo strandweer vernieuwen...")
+run_script("test_beach_weather.py")
+
+print("Stranddata controleren...")
 
 try:
     with open("data/beach_weather.json", encoding="utf-8") as f:
@@ -136,7 +137,6 @@ try:
     print(f"DEBUG is_day: {first_current.get('is_day')}")
 except Exception as e:
     print(f"DEBUG FOUT: {e}")
-    print(f"Strandweer script resultaat: {beach_result}")
 
     try:
         with open("data/beach_weather.json", encoding="utf-8") as f:
