@@ -120,7 +120,8 @@ def main():
     tides = run_script("test_tides.py") or {}
 
     print("Open-Meteo strandweer vernieuwen...")
-    run_script("test_beach_weather.py")
+    beach_result = run_script("test_beach_weather.py")
+    print(f"Strandweer script resultaat: {beach_result}")
 
     try:
         with open("data/beach_weather.json", encoding="utf-8") as f:
