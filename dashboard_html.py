@@ -78,25 +78,33 @@ def beach_image(name):
             return base + ext
     return base + ".jpg"
 
-def weather_icon(condition):
+def weather_icon(condition, is_day=1):
     c = str(condition).lower()
+    night = str(is_day) == "0"
+
     rules = [
         (["onweer","trovoada","thunder"], "thunderstorms-day-rain.svg"),
         (["zware regen","extreme rain"], "extreme-rain.svg"),
         (["motregen","chuvisco","drizzle"], "drizzle.svg"),
-        (["buien","aguaceiros","regen","chuva","rain"], "partly-cloudy-day-rain.svg"),
+        (["buien","aguaceiros","regen","chuva","rain"],
+         "partly-cloudy-night-rain.svg" if night else "partly-cloudy-day-rain.svg"),
         (["natte sneeuw","sleet"], "sleet.svg"),
         (["sneeuw","snow"], "snow.svg"),
         (["mist","fog"], "mist.svg"),
         (["nevel","haze"], "haze.svg"),
-        (["zwaar bewolkt","zeer bewolkt","overcast","muito nublado"], "overcast.svg"),
-        (["licht bewolkt","gedeeltelijk bewolkt","partly cloudy","pouco nublado"], "partly-cloudy-day.svg"),
+        (["zwaar bewolkt","zeer bewolkt","overcast","muito nublado"],
+         "overcast.svg"),
+        (["licht bewolkt","gedeeltelijk bewolkt","partly cloudy","pouco nublado"],
+         "partly-cloudy-night.svg" if night else "partly-cloudy-day.svg"),
         (["bewolkt","cloudy","nublado"], "cloudy.svg"),
-        (["helder","zonnig","clear","limpo"], "clear-day.svg"),
+        (["helder","zonnig","clear","limpo"],
+         "clear-night.svg" if night else "clear-day.svg"),
     ]
+
     for words, filename in rules:
         if any(word in c for word in words):
             return filename
+
     return "not-available.svg"
 
 def fmt_temp(value):
@@ -122,6 +130,7 @@ def main():
 
     weather = {
         "temperature":"Niet beschikbaar", "condition":"Niet beschikbaar",
+        "is_day": 1,
         "feels_like":"Niet beschikbaar", "humidity":"Niet beschikbaar",
         "wind_force":"Niet beschikbaar", "wind":"Niet beschikbaar",
         "wind_gusts":"Niet beschikbaar", "rain_probability":"Niet beschikbaar",
@@ -202,7 +211,10 @@ def main():
                 ]
             if parts:
                 beach["weather"] = " | ".join(parts)
-                beach["weather_icon"] = weather_icon(current.get("weather", ""))
+                beach["weather_icon"] = weather_icon(
+                    current.get("weather", ""),
+                    current.get("is_day", 1)
+                )
 
             def number(value, suffix=""):
                 if value is None or value == "":
@@ -261,7 +273,7 @@ def main():
 
         forecast_html = "".join(
             f'<div class="forecast"><b>{esc(item.get("day",""))}</b>'
-            f'<img src="static/weather/{esc(weather_icon(item.get("weather","")))}">'
+            f'<img src="static/weather/{esc(weather_icon(weather["condition"], weather.get("is_day", 1)))}">'
             f'<div>{esc(item.get("weather",""))}<small>Wind: {esc(item.get("wind",""))}</small></div>'
             f'<strong>{esc(item.get("temp",""))}<small>Regen: {esc(item.get("precipitation_probability",""))}</small></strong></div>'
             for item in forecast
