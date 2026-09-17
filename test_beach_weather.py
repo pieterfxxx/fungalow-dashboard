@@ -1,3 +1,4 @@
+import time
 import json
 from pathlib import Path
 
@@ -126,11 +127,20 @@ def get_all_beach_weather():
         "precipitation_unit": "mm",
     }
 
-    response = requests.get(
-        OPEN_METEO_URL,
-        params=params,
-        timeout=30
-    )
+    for attempt in range(3):
+    try:
+        response = requests.get(
+            url,
+            params=params,
+            timeout=20
+        )
+        response.raise_for_status()
+        break
+    except requests.exceptions.RequestException as e:
+        print(f"Open-Meteo poging {attempt + 1}/3 mislukt: {e}")
+        if attempt == 2:
+            raise
+        time.sleep(3)
 
     response.raise_for_status()
 
