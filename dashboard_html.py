@@ -306,7 +306,7 @@ def main():
             f'<section class="current"><div class="panel"><h2>HUIDIG WEER</h2>'
             f'<div class="summary"><strong>{esc(weather["temperature"])}</strong>'
             f'<div>{esc(weather["condition"])}<small>Gevoel: {esc(weather["feels_like"])}</small></div>'
-            f'<img src="static/weather/{esc(weather_icon(weather["condition"]))}"></div>'
+            f'<img src="static/weather/{esc(weather_icon(weather["condition"], weather.get("is_day", 1)))}"></div>'
             f'<div class="groups">{group_html}</div></div></section>'
             f'<section class="forecastbox"><div class="panel"><h2>WEERSVOORSPELLING</h2>'
             f'{forecast_html}</div></section></div>'
