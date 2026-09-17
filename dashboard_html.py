@@ -80,7 +80,7 @@ def beach_image(name):
 
 def weather_icon(condition, is_day=1):
     c = str(condition).lower()
-    night = str(is_day) == "0"
+    night = is_day == 0 or str(is_day).lower() == "0"
 
     rules = [
         (["onweer","trovoada","thunder"], "thunderstorms-day-rain.svg"),
@@ -229,7 +229,7 @@ def main():
                 beach["weather"] = " | ".join(parts)
                 beach["weather_icon"] = weather_icon(
                     current.get("weather", ""),
-                    current.get("is_day", 1)
+                    current.get("is_day")
                 )
 
             def number(value, suffix=""):
