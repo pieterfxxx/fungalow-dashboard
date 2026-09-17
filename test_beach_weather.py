@@ -240,7 +240,7 @@ def main():
     except Exception as error:
         print()
         print(f"FOUT bij Open-Meteo: {error}")
-        return
+        raise
 
     print("Data succesvol ontvangen.")
 
