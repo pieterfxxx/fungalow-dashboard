@@ -103,6 +103,7 @@ def get_all_beach_weather():
         "current": ",".join([
             "temperature_2m",
             "weather_code",
+            "is_day",
             "wind_speed_10m",
             "wind_direction_10m",
             "wind_gusts_10m",
@@ -163,7 +164,7 @@ def process_beach_weather(beach, data):
             "temperature": current.get("temperature_2m"),
 
             "weather_code": weather_code,
-
+            "is_day": current.get("is_day"),
             "weather": WEATHER_CODES.get(
                 weather_code,
                 f"Onbekend ({weather_code})"
