@@ -193,6 +193,7 @@ url = (
     "wind_direction_10m,"
     "wind_gusts_10m,"
     "weather_code,"
+    "is_day,"
     "visibility,"
     "surface_pressure,"
     "uv_index"
@@ -239,7 +240,7 @@ current_weather = {
     "condition": weather_description(
         current["weather_code"]
     ),
-
+    "is_day": current["is_day"],
     "feels_like": f"{current['apparent_temperature']:.1f}°C",
 
     "humidity": f"{current['relative_humidity_2m']:.0f}%",
