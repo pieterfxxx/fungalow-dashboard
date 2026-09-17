@@ -273,7 +273,7 @@ def main():
 
         forecast_html = "".join(
             f'<div class="forecast"><b>{esc(item.get("day",""))}</b>'
-            f'<img src="static/weather/{esc(weather_icon(weather["condition"], weather.get("is_day", 1)))}">'
+            f'<img src="static/weather/{esc(weather_icon(item.get("weather", ""), 1))}">'
             f'<div>{esc(item.get("weather",""))}<small>Wind: {esc(item.get("wind",""))}</small></div>'
             f'<strong>{esc(item.get("temp",""))}<small>Regen: {esc(item.get("precipitation_probability",""))}</small></strong></div>'
             for item in forecast
