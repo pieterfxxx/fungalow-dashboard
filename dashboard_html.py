@@ -113,6 +113,83 @@ def fmt_temp(value):
     except Exception:
         return str(value) + "°C" if value else None
 
+def stringetjes_score(temperature, wind_speed, condition, is_day):
+    """
+    Berekent een speelse Stringetjes kans van 1 t/m 5
+    op basis van temperatuur, zon/weer en wind.
+    """
+
+    try:
+        temp = float(temperature)
+    except (TypeError, ValueError):
+        return 1
+
+    try:
+        wind = float(wind_speed)
+    except (TypeError, ValueError):
+        wind = 20
+
+    condition = str(condition).lower()
+
+    # -------------------------
+    # TEMPERATUUR
+    # -------------------------
+    if temp < 16:
+        score = 1
+    elif temp < 18:
+        score = 2
+    elif temp < 21:
+        score = 3
+    elif temp < 24:
+        score = 4
+    else:
+        score = 5
+
+    # -------------------------
+    # ZON / WEER
+    # -------------------------
+    if is_day == 0 or str(is_day).lower() == "0":
+        score -= 2
+    elif any(x in condition for x in [
+        "helder", "zonnig", "clear", "limpo"
+    ]):
+        score += 1
+    elif any(x in condition for x in [
+        "licht bewolkt", "gedeeltelijk bewolkt",
+        "partly cloudy", "pouco nublado"
+    ]):
+        score += 0
+    elif any(x in condition for x in [
+        "regen", "buien", "chuva", "aguaceiros",
+        "rain", "onweer", "trovoada", "thunder",
+        "mist", "fog"
+    ]):
+        score -= 2
+    else:
+        score -= 1
+
+    # -------------------------
+    # WIND
+    # -------------------------
+    if wind < 10:
+        score += 1
+    elif wind < 15:
+        score += 0
+    elif wind < 20:
+        score -= 1
+    else:
+        score -= 2
+
+    return max(1, min(5, score))
+
+
+def stringetjes_icons(score):
+    """Geeft HTML terug met 1 t/m 5 thong-iconen."""
+    return "".join(
+        '<img class="stringetjes-icon" src="static/beaches/thong.png" alt="">'
+        for _ in range(score)
+    )
+    
 def main():
     # Exact dezelfde data-bronnen als de werkende laptopversie.
     home = run_script("test_home_weather.py") or {}
@@ -242,9 +319,16 @@ def main():
                 except Exception:
                     return str(value) + suffix
 
+            beach["stringetjes_score"] = stringetjes_score(
+                current.get("temperature"),
+                current.get("wind_speed"),
+                current.get("weather", ""),
+                current.get("is_day")
+            )
+
             if current.get("wind_speed") is not None:
                 beach["wind"] = number(current["wind_speed"], " km/u")
-                if current.get("wind_direction"):
+            if current.get("wind_direction"):
                     beach["wind"] += " uit " + str(current["wind_direction"])
             if current.get("wind_gusts") is not None:
                 beach["wind_gusts"] = number(current["wind_gusts"], " km/u")
@@ -274,17 +358,25 @@ def main():
                 ("Golfstatus:", beach["status"]),
                 ("Waarschuwingen:", beach["warning"]),
             ]
-            row_html = "".join(
-                f'<div class="row"><b>{esc(label)}</b><span>{esc(value)}</span></div>'
-                for label, value in rows
-            )
+        row_html = "".join(
+            f'<div class="row"><b>{esc(label)}</b><span>{esc(value)}</span></div>'
+            for label, value in rows
+        )
+
+        stringetjes_html = (
+            f'<div class="stringetjes-row">'
+            f'<b>Stringetjes kans</b>'
+            f'<span>{stringetjes_icons(beach.get("stringetjes_score", 1))}</span>'
+        f'</div>'
+        )
+        
             cards.append(
                 f"<section class=\"beach\" style=\"background-image:url('static/beaches/{esc(beach['image'])}')\">"
                 f'<div class="wash"></div><div class="card">'
                 f'<img class="beach-weather-icon" src="static/weather/{esc(beach["weather_icon"])}" alt="">'
                 f'<h2>{esc(beach["name"])}</h2>'
                 f'<p>{esc(beach["distance"])} &nbsp;•&nbsp; {esc(beach["drive"])}</p>'
-                f'{row_html}</div></section>'
+                f'{row_html}{stringetjes_html}</div></section>'
             )
 
         forecast_html = "".join(
@@ -362,6 +454,29 @@ h2{margin:0 0 28px;font-size:clamp(22px,2vw,36px)}.summary{display:flex;gap:30px
 .right{display:grid;grid-template-rows:1fr 1fr;border-left:3px solid}.beach{position:relative;min-width:0;min-height:0;padding:30px;background-size:cover;background-position:center;border-bottom:3px solid}
 .beach:last-child{border:0}.wash{position:absolute;inset:0;background:#f5f5f566}.card{position:relative;width:min(800px,100%);height:100%;padding:20px 25px;background:#fafafabe}.beach-weather-icon{position:absolute;right:18px;top:12px;width:90px;height:90px;object-fit:contain;z-index:2}.card h2,.card p,.card .row{position:relative;z-index:1}.beach-weather-icon{position:absolute;right:20px;top:15px;width:clamp(65px,7vw,105px);height:clamp(65px,7vw,105px)}
 .card h2{margin:0 0 14px}.card p{font-size:clamp(14px,1.2vw,24px);margin:0 0 25px}.weather-row{display:grid;grid-template-columns:115px 1fr;gap:0;font-size:clamp(13px,1.15vw,22px);line-height:1.55}.weather-row b{font-weight:400}.weather-row span{display:block}.row{display:grid;grid-template-columns:255px 1fr;gap:10px;font-size:clamp(13px,1.15vw,22px);line-height:1.55}
+
+.stringetjes-row{
+    display:grid;
+    grid-template-columns:255px 1fr;
+    gap:10px;
+    align-items:center;
+    margin-top:8px;
+    font-size:clamp(15px,1.3vw,24px);
+    line-height:1.4;
+}
+
+.stringetjes-row b{
+    font-weight:600;
+}
+
+.stringetjes-icon{
+    width:clamp(65px,7vw,105px);
+    height:clamp(65px,7vw,105px);
+    object-fit:contain;
+    vertical-align:middle;
+    margin-right:2px;
+}
+
 .nav{position:fixed;z-index:5;bottom:12px;left:50%;transform:translateX(-50%);background:#fff;padding:7px 14px;border-radius:20px}button{border:0;background:transparent;font-size:20px}
 @media(max-width:800px){
 html,body{width:100%;min-width:0;overflow-x:hidden}
@@ -394,6 +509,16 @@ h2{margin-bottom:15px;font-size:clamp(18px,5.2vw,25px)}
 .card p{padding-right:65px;margin-bottom:16px;font-size:13px}
 .beach-weather-icon{right:10px;top:9px;width:66px;height:66px}
 .row{grid-template-columns:minmax(100px,42%) minmax(0,1fr);gap:6px;font-size:12px;line-height:1.45}
+.stringetjes-row{
+    grid-template-columns:minmax(100px,42%) minmax(0,1fr);
+    gap:6px;
+    font-size:13px;
+}
+
+.stringetjes-icon{
+    width:66px;
+    height:66px;
+}
 .nav{display:none}
 }
 </style>
