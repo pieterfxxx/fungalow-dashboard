@@ -475,11 +475,10 @@ h2{margin:0 0 28px;font-size:clamp(22px,2vw,36px)}.summary{display:flex;gap:30px
 }
 
 .stringetjes-icon{
-    width:clamp(65px,7vw,105px);
-    height:clamp(65px,7vw,105px);
+    width:clamp(39px,4.2vw,63px);
+    height:clamp(39px,4.2vw,63px);
     object-fit:contain;
     vertical-align:middle;
-    margin-right:2px;
 }
 
 .nav{position:fixed;z-index:5;bottom:12px;left:50%;transform:translateX(-50%);background:#fff;padding:7px 14px;border-radius:20px}button{border:0;background:transparent;font-size:20px}
@@ -521,8 +520,8 @@ h2{margin-bottom:15px;font-size:clamp(18px,5.2vw,25px)}
 }
 
 .stringetjes-icon{
-    width:66px;
-    height:66px;
+    width:40px;
+    height:40px;
 }
 .nav{display:none}
 }
