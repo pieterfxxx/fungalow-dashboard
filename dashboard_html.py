@@ -349,34 +349,39 @@ def main():
         cards = []
         for beach in selected:
             rows = [
-                ("Weer:", beach["weather"]), ("Wind:", beach["wind"]),
+                ("Weer:", beach["weather"]),
+                ("Wind:", beach["wind"]),
                 ("Windvlagen:", beach["wind_gusts"]),
                 ("Neerslag nu:", beach["precipitation"]),
                 ("Regenkans:", beach["rain_probability"]),
                 ("Regen vandaag:", beach["rain_mm"]),
-                ("Water:", beach["water"]), ("Golven:", beach["waves"]),
+                ("Water:", beach["water"]),
+                ("Golven:", beach["waves"]),
                 ("Golfstatus:", beach["status"]),
                 ("Waarschuwingen:", beach["warning"]),
             ]
-        row_html = "".join(
-            f'<div class="row"><b>{esc(label)}</b><span>{esc(value)}</span></div>'
-            for label, value in rows
-        )
 
-        stringetjes_html = (
-            f'<div class="stringetjes-row">'
-            f'<b>Stringetjes kans</b>'
-            f'<span>{stringetjes_icons(beach.get("stringetjes_score", 1))}</span>'
-        f'</div>'
-        )
-        
+            row_html = "".join(
+                f'<div class="row"><b>{esc(label)}</b><span>{esc(value)}</span></div>'
+                for label, value in rows
+            )
+
+            stringetjes_html = (
+                f'<div class="stringetjes-row">'
+                f'<b>Stringetjes kans</b>'
+                f'<span>{stringetjes_icons(beach.get("stringetjes_score", 1))}</span>'
+                f'</div>'
+            )
+
             cards.append(
                 f"<section class=\"beach\" style=\"background-image:url('static/beaches/{esc(beach['image'])}')\">"
                 f'<div class="wash"></div><div class="card">'
                 f'<img class="beach-weather-icon" src="static/weather/{esc(beach["weather_icon"])}" alt="">'
                 f'<h2>{esc(beach["name"])}</h2>'
                 f'<p>{esc(beach["distance"])} &nbsp;•&nbsp; {esc(beach["drive"])}</p>'
-                f'{row_html}{stringetjes_html}</div></section>'
+                f'{row_html}'
+                f'{stringetjes_html}'
+                f'</div></section>'
             )
 
         forecast_html = "".join(
