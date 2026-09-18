@@ -466,7 +466,7 @@ h2{margin:0 0 28px;font-size:clamp(22px,2vw,36px)}.summary{display:flex;gap:30px
     gap:10px;
     align-items:center;
     margin-top:8px;
-    font-size:clamp(15px,1.3vw,24px);
+    font-size:clamp(13px,1.15vw,22px);
     line-height:1.4;
 }
 
