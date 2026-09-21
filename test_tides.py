@@ -60,6 +60,7 @@ station = stations[0]
 station_id = station["id"]
 
 print("Station:", station["name"])
+print("Station ID:", station_id)
 
 
 # ==============================
