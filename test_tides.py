@@ -10,8 +10,9 @@ from config import TIDECHECK_API_KEY
 # INSTELLINGEN
 # ==============================
 
-LAT = 39.2010972
-LNG = -9.3468292
+STATION_ID = "fes2022-lourinhã"
+STATION_NAME = "Lourinhã"
+
 LOCAL_TZ = ZoneInfo("Europe/Lisbon")
 
 
@@ -28,48 +29,18 @@ def format_time(dt):
 
 
 # ==============================
-# 1. STATION OPHALEN
+# GETIJDENDATA OPHALEN
 # ==============================
 
 headers = {
     "X-API-Key": TIDECHECK_API_KEY
 }
 
-station_url = "https://tidecheck.com/api/stations/nearest"
-
-print("Getijdenstation zoeken...")
-
-response = requests.get(
-    station_url,
-    params={
-        "lat": LAT,
-        "lng": LNG
-    },
-    headers=headers,
-    timeout=20
-)
-
-response.raise_for_status()
-
-stations = response.json()
-
-if not stations:
-    raise ValueError("Geen getijdenstation gevonden.")
-
-station = stations[0]
-station_id = station["id"]
-
-print("Station:", station["name"])
-print("Station ID:", station_id)
-
-
-# ==============================
-# 2. GETIJDENDATA OPHALEN
-# ==============================
-
-tides_url = f"https://tidecheck.com/api/station/{station_id}/tides"
+tides_url = f"https://tidecheck.com/api/station/{STATION_ID}/tides"
 
 print("Getijdendata ophalen...")
+print("Station:", STATION_NAME)
+print("Station ID:", STATION_ID)
 
 response = requests.get(
     tides_url,
@@ -86,7 +57,7 @@ data = response.json()
 
 
 # ==============================
-# 3. GRAFIEKDATA VERWERKEN
+# GRAFIEKDATA VERWERKEN
 # ==============================
 
 points = []
@@ -115,7 +86,7 @@ if not window:
 
 
 # ==============================
-# 4. HUIDIGE HOOGTE
+# HUIDIGE HOOGTE
 # ==============================
 
 current_point = min(
@@ -127,7 +98,7 @@ current_height = current_point["height"]
 
 
 # ==============================
-# 5. STATUS
+# STATUS
 # ==============================
 
 current_index = points.index(current_point)
@@ -146,7 +117,7 @@ else:
 
 
 # ==============================
-# 6. HOOG- EN LAAGWATER
+# HOOG- EN LAAGWATER
 # ==============================
 
 extremes = []
@@ -171,7 +142,7 @@ for event in extremes:
 
 
 # ==============================
-# 7. VOLGENDE VLOED EN EB
+# VOLGENDE VLOED EN EB
 # ==============================
 
 next_high = next(
@@ -194,11 +165,11 @@ next_low = next(
 
 
 # ==============================
-# 8. RESULTAAT VOOR DASHBOARD
+# RESULTAAT VOOR DASHBOARD
 # ==============================
 
 result = {
-    "station": station["name"],
+    "station": STATION_NAME,
     "current_height": f"{current_height:.2f} m",
     "direction": tide_direction,
     "next_high": (
