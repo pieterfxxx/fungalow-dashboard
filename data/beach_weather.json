@@ -5,13 +5,13 @@
             "lon": -9.3363481
         },
         "current": {
-            "temperature": 21.0,
+            "temperature": 20.7,
             "weather_code": 3,
             "is_day": 1,
             "weather": "Bewolkt",
-            "wind_speed": 13.0,
-            "wind_direction_degrees": 346,
-            "wind_direction": "NNW",
+            "wind_speed": 12.7,
+            "wind_direction_degrees": 353,
+            "wind_direction": "N",
             "wind_gusts": 22.3,
             "precipitation": 0.0
         },
@@ -21,7 +21,7 @@
             "rain_probability": 0,
             "rain_mm": 0.0
         },
-        "updated": "2026-09-27T13:15"
+        "updated": "2026-09-27T14:15"
     },
     "Baleal Zuid": {
         "coordinates": {
@@ -29,13 +29,13 @@
             "lon": -9.3434251
         },
         "current": {
-            "temperature": 21.0,
+            "temperature": 20.7,
             "weather_code": 3,
             "is_day": 1,
             "weather": "Bewolkt",
-            "wind_speed": 13.0,
-            "wind_direction_degrees": 346,
-            "wind_direction": "NNW",
+            "wind_speed": 12.7,
+            "wind_direction_degrees": 353,
+            "wind_direction": "N",
             "wind_gusts": 22.3,
             "precipitation": 0.0
         },
@@ -45,7 +45,7 @@
             "rain_probability": 0,
             "rain_mm": 0.0
         },
-        "updated": "2026-09-27T13:15"
+        "updated": "2026-09-27T14:15"
     },
     "Supertubos": {
         "coordinates": {
@@ -53,13 +53,13 @@
             "lon": -9.3628866
         },
         "current": {
-            "temperature": 21.0,
+            "temperature": 20.7,
             "weather_code": 3,
             "is_day": 1,
             "weather": "Bewolkt",
-            "wind_speed": 13.0,
-            "wind_direction_degrees": 346,
-            "wind_direction": "NNW",
+            "wind_speed": 12.7,
+            "wind_direction_degrees": 353,
+            "wind_direction": "N",
             "wind_gusts": 22.3,
             "precipitation": 0.0
         },
@@ -69,12 +69,108 @@
             "rain_probability": 0,
             "rain_mm": 0.0
         },
-        "updated": "2026-09-27T13:15"
+        "updated": "2026-09-27T14:15"
     },
     "São Bernardino": {
         "coordinates": {
             "lat": 39.3111807,
             "lon": -9.3467045
+        },
+        "current": {
+            "temperature": 22.1,
+            "weather_code": 3,
+            "is_day": 1,
+            "weather": "Bewolkt",
+            "wind_speed": 15.6,
+            "wind_direction_degrees": 353,
+            "wind_direction": "N",
+            "wind_gusts": 29.9,
+            "precipitation": 0.0
+        },
+        "today": {
+            "temp_min": 17.5,
+            "temp_max": 22.3,
+            "rain_probability": 0,
+            "rain_mm": 0.0
+        },
+        "updated": "2026-09-27T14:15"
+    },
+    "Valmitão": {
+        "coordinates": {
+            "lat": 39.2010972,
+            "lon": -9.3468292
+        },
+        "current": {
+            "temperature": 23.2,
+            "weather_code": 3,
+            "is_day": 1,
+            "weather": "Bewolkt",
+            "wind_speed": 15.1,
+            "wind_direction_degrees": 342,
+            "wind_direction": "NNW",
+            "wind_gusts": 31.0,
+            "precipitation": 0.0
+        },
+        "today": {
+            "temp_min": 17.6,
+            "temp_max": 23.5,
+            "rain_probability": 0,
+            "rain_mm": 0.0
+        },
+        "updated": "2026-09-27T14:15"
+    },
+    "Santa Rita Noord": {
+        "coordinates": {
+            "lat": 39.1723694,
+            "lon": -9.3581049
+        },
+        "current": {
+            "temperature": 21.7,
+            "weather_code": 3,
+            "is_day": 1,
+            "weather": "Bewolkt",
+            "wind_speed": 14.6,
+            "wind_direction_degrees": 340,
+            "wind_direction": "NNW",
+            "wind_gusts": 25.9,
+            "precipitation": 0.0
+        },
+        "today": {
+            "temp_min": 17.5,
+            "temp_max": 21.7,
+            "rain_probability": 0,
+            "rain_mm": 0.0
+        },
+        "updated": "2026-09-27T14:15"
+    },
+    "Santa Cruz Centro": {
+        "coordinates": {
+            "lat": 39.1389198,
+            "lon": -9.3800249
+        },
+        "current": {
+            "temperature": 21.7,
+            "weather_code": 3,
+            "is_day": 1,
+            "weather": "Bewolkt",
+            "wind_speed": 14.6,
+            "wind_direction_degrees": 340,
+            "wind_direction": "NNW",
+            "wind_gusts": 25.9,
+            "precipitation": 0.0
+        },
+        "today": {
+            "temp_min": 17.5,
+            "temp_max": 21.7,
+            "rain_probability": 0,
+            "rain_mm": 0.0
+        },
+        "updated": "2026-09-27T14:15"
+    },
+    "Praia do Peralta": {
+        "coordinates": {
+            "lat": 39.24520757260981,
+            "lon": -9.340824603944416
         },
         "current": {
             "temperature": 22.3,
@@ -88,108 +184,12 @@
             "precipitation": 0.0
         },
         "today": {
-            "temp_min": 17.5,
-            "temp_max": 22.3,
-            "rain_probability": 0,
-            "rain_mm": 0.0
-        },
-        "updated": "2026-09-27T13:15"
-    },
-    "Valmitão": {
-        "coordinates": {
-            "lat": 39.2010972,
-            "lon": -9.3468292
-        },
-        "current": {
-            "temperature": 23.3,
-            "weather_code": 3,
-            "is_day": 1,
-            "weather": "Bewolkt",
-            "wind_speed": 14.7,
-            "wind_direction_degrees": 335,
-            "wind_direction": "NNW",
-            "wind_gusts": 29.9,
-            "precipitation": 0.0
-        },
-        "today": {
-            "temp_min": 17.6,
-            "temp_max": 23.5,
-            "rain_probability": 0,
-            "rain_mm": 0.0
-        },
-        "updated": "2026-09-27T13:15"
-    },
-    "Santa Rita Noord": {
-        "coordinates": {
-            "lat": 39.1723694,
-            "lon": -9.3581049
-        },
-        "current": {
-            "temperature": 21.4,
-            "weather_code": 3,
-            "is_day": 1,
-            "weather": "Bewolkt",
-            "wind_speed": 13.9,
-            "wind_direction_degrees": 335,
-            "wind_direction": "NNW",
-            "wind_gusts": 25.2,
-            "precipitation": 0.0
-        },
-        "today": {
-            "temp_min": 17.5,
-            "temp_max": 21.7,
-            "rain_probability": 0,
-            "rain_mm": 0.0
-        },
-        "updated": "2026-09-27T13:15"
-    },
-    "Santa Cruz Centro": {
-        "coordinates": {
-            "lat": 39.1389198,
-            "lon": -9.3800249
-        },
-        "current": {
-            "temperature": 21.4,
-            "weather_code": 3,
-            "is_day": 1,
-            "weather": "Bewolkt",
-            "wind_speed": 13.9,
-            "wind_direction_degrees": 335,
-            "wind_direction": "NNW",
-            "wind_gusts": 25.2,
-            "precipitation": 0.0
-        },
-        "today": {
-            "temp_min": 17.5,
-            "temp_max": 21.7,
-            "rain_probability": 0,
-            "rain_mm": 0.0
-        },
-        "updated": "2026-09-27T13:15"
-    },
-    "Praia do Peralta": {
-        "coordinates": {
-            "lat": 39.24520757260981,
-            "lon": -9.340824603944416
-        },
-        "current": {
-            "temperature": 22.5,
-            "weather_code": 3,
-            "is_day": 1,
-            "weather": "Bewolkt",
-            "wind_speed": 15.0,
-            "wind_direction_degrees": 339,
-            "wind_direction": "NNW",
-            "wind_gusts": 29.2,
-            "precipitation": 0.0
-        },
-        "today": {
             "temp_min": 17.7,
             "temp_max": 22.5,
             "rain_probability": 3,
             "rain_mm": 0.0
         },
-        "updated": "2026-09-27T13:15"
+        "updated": "2026-09-27T14:15"
     },
     "Praia do Areal Sul": {
         "coordinates": {
@@ -197,14 +197,14 @@
             "lon": -9.3372809
         },
         "current": {
-            "temperature": 22.5,
+            "temperature": 22.3,
             "weather_code": 3,
             "is_day": 1,
             "weather": "Bewolkt",
-            "wind_speed": 15.0,
-            "wind_direction_degrees": 339,
+            "wind_speed": 15.2,
+            "wind_direction_degrees": 346,
             "wind_direction": "NNW",
-            "wind_gusts": 29.2,
+            "wind_gusts": 29.9,
             "precipitation": 0.0
         },
         "today": {
@@ -213,7 +213,7 @@
             "rain_probability": 3,
             "rain_mm": 0.0
         },
-        "updated": "2026-09-27T13:15"
+        "updated": "2026-09-27T14:15"
     },
     "Porto Dinheiro": {
         "coordinates": {
@@ -221,14 +221,14 @@
             "lon": -9.3444491
         },
         "current": {
-            "temperature": 23.3,
+            "temperature": 23.2,
             "weather_code": 3,
             "is_day": 1,
             "weather": "Bewolkt",
-            "wind_speed": 14.7,
-            "wind_direction_degrees": 335,
+            "wind_speed": 15.1,
+            "wind_direction_degrees": 342,
             "wind_direction": "NNW",
-            "wind_gusts": 29.9,
+            "wind_gusts": 31.0,
             "precipitation": 0.0
         },
         "today": {
@@ -237,7 +237,7 @@
             "rain_probability": 0,
             "rain_mm": 0.0
         },
-        "updated": "2026-09-27T13:15"
+        "updated": "2026-09-27T14:15"
     },
     "Lisboa": {
         "coordinates": {
@@ -245,14 +245,14 @@
             "lon": -9.1348611
         },
         "current": {
-            "temperature": 28.0,
+            "temperature": 27.9,
             "weather_code": 3,
             "is_day": 1,
             "weather": "Bewolkt",
-            "wind_speed": 14.8,
-            "wind_direction_degrees": 354,
-            "wind_direction": "N",
-            "wind_gusts": 34.2,
+            "wind_speed": 16.2,
+            "wind_direction_degrees": 347,
+            "wind_direction": "NNW",
+            "wind_gusts": 36.7,
             "precipitation": 0.0
         },
         "today": {
@@ -261,7 +261,7 @@
             "rain_probability": 0,
             "rain_mm": 0.0
         },
-        "updated": "2026-09-27T13:15"
+        "updated": "2026-09-27T14:15"
     },
     "Nazaré": {
         "coordinates": {
@@ -273,10 +273,10 @@
             "weather_code": 3,
             "is_day": 1,
             "weather": "Bewolkt",
-            "wind_speed": 12.1,
-            "wind_direction_degrees": 333,
+            "wind_speed": 12.8,
+            "wind_direction_degrees": 344,
             "wind_direction": "NNW",
-            "wind_gusts": 24.1,
+            "wind_gusts": 25.9,
             "precipitation": 0.0
         },
         "today": {
@@ -285,7 +285,7 @@
             "rain_probability": 3,
             "rain_mm": 0.0
         },
-        "updated": "2026-09-27T13:15"
+        "updated": "2026-09-27T14:15"
     },
     "São Martinho do Porto": {
         "coordinates": {
@@ -293,14 +293,14 @@
             "lon": -9.1381667
         },
         "current": {
-            "temperature": 22.1,
+            "temperature": 21.9,
             "weather_code": 3,
             "is_day": 1,
             "weather": "Bewolkt",
-            "wind_speed": 12.6,
-            "wind_direction_degrees": 333,
+            "wind_speed": 12.5,
+            "wind_direction_degrees": 342,
             "wind_direction": "NNW",
-            "wind_gusts": 22.7,
+            "wind_gusts": 23.4,
             "precipitation": 0.0
         },
         "today": {
@@ -309,7 +309,7 @@
             "rain_probability": 0,
             "rain_mm": 0.0
         },
-        "updated": "2026-09-27T13:15"
+        "updated": "2026-09-27T14:15"
     },
     "Foz do Arelho": {
         "coordinates": {
@@ -317,12 +317,12 @@
             "lon": -9.2261111
         },
         "current": {
-            "temperature": 22.3,
+            "temperature": 22.0,
             "weather_code": 3,
             "is_day": 1,
             "weather": "Bewolkt",
-            "wind_speed": 13.4,
-            "wind_direction_degrees": 336,
+            "wind_speed": 13.1,
+            "wind_direction_degrees": 344,
             "wind_direction": "NNW",
             "wind_gusts": 28.1,
             "precipitation": 0.0
@@ -333,6 +333,6 @@
             "rain_probability": 0,
             "rain_mm": 0.0
         },
-        "updated": "2026-09-27T13:15"
+        "updated": "2026-09-27T14:15"
     }
 }
